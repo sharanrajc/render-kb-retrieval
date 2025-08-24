@@ -15,30 +15,6 @@ from math import isfinite
 MAX_K = 20  # hard cap to avoid latency/memory issues
 
 
-def _clean_value(v):
-    # Normalize values so JSON is strictly compliant
-    if v is None:
-        return ""
-    if isinstance(v, float) and not isfinite(v):  # NaN/Inf
-        return ""
-    # Many CSV fields should be strings; cast anything unexpected safely
-    if isinstance(v, (dict, list)):
-        return v  # already JSON-safe
-    return str(v) if not isinstance(v, (str, int, float, bool)) else v
-
-
-def sanitize_meta_row(m: dict) -> dict:
-    return {
-        "chunk_id": int(m.get("chunk_id") or 0),
-        "doc_id": _clean_value(m.get("doc_id")),
-        "title": _clean_value(m.get("title")),
-        "text": _clean_value(m.get("text")),
-        "source_url": _clean_value(m.get("source_url")),
-        "updated": _clean_value(m.get("updated")),
-        "tags": _clean_value(m.get("tags")),
-    }
-
-
 # -----------------------
 # Config / Environment
 # -----------------------
@@ -147,20 +123,55 @@ def health():
     }
 
 
+def _clean_value(v):
+    if v is None:
+        return ""
+    if isinstance(v, float) and not isfinite(v):  # NaN/Inf
+        return ""
+    if isinstance(v, (dict, list)):
+        return v
+    return str(v) if not isinstance(v, (str, int, float, bool)) else v
+
+def sanitize_meta_row(m: dict) -> dict:
+    return {
+        "chunk_id": int((m.get("chunk_id") or 0)),
+        "doc_id": _clean_value(m.get("doc_id")),
+        "title": _clean_value(m.get("title")),
+        "text": _clean_value(m.get("text")),
+        "source_url": _clean_value(m.get("source_url")),
+        "updated": _clean_value(m.get("updated")),
+        "tags": _clean_value(m.get("tags")),
+    }
+
 @app.post("/search")
 def search(req: SearchRequest, x_api_key: Optional[str] = Header(None)):
-    # ... (unchanged auth/guards)
+    # API key check (optional)
+    if API_KEY and x_api_key != API_KEY:
+        print("[KB] Unauthorized search attempt (bad x-api-key).", flush=True)
+        raise HTTPException(status_code=401, detail="unauthorized")
 
+    # ✅ define q here
+    q = (req.query or "").strip()
+    if not q:
+        raise HTTPException(status_code=400, detail="query is required")
+
+    # Guard: empty index
     total = len(meta)
     if total == 0:
         print("[KB] Search on empty index — returning zero hits.", flush=True)
         return {"results": []}
 
-    k = max(1, min(int(req.k or 5), MAX_K, total))
-
+    # Cap k
     try:
-        qv = embed_query(q)
-        D, I = index.search(qv, k)
+        k_req = int(req.k or 5)
+    except Exception:
+        k_req = 5
+    k = max(1, min(k_req, MAX_K, total))
+
+    # Embed & search
+    try:
+        qv = embed_query(q)            # your existing embed_query() function
+        D, I = index.search(qv, k)     # FAISS IP/cosine index
     except Exception as e:
         print(f"[KB] Search pipeline failed: {e}", flush=True)
         raise HTTPException(status_code=500, detail="search failed")
@@ -183,4 +194,5 @@ def search(req: SearchRequest, x_api_key: Optional[str] = Header(None)):
 
     print(f"[KB] Query='{q[:60]}{'...' if len(q) > 60 else ''}' → {len(hits)} hits (k={k}, total={total})", flush=True)
     return {"results": hits}
+
 
