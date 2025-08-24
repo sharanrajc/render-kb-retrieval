@@ -13,6 +13,7 @@ from openai import OpenAI
 
 from math import isfinite
 MAX_K = 20  # hard cap to avoid latency/memory issues
+FORCE_REBUILD = os.environ.get("FORCE_REBUILD", "0") == "1"
 
 
 # -----------------------
