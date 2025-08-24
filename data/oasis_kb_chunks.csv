@@ -1,6 +1,376 @@
 chunk_id,doc_id,title,text,source_url,updated,tags
-1,intro_funding,What is pre‑settlement funding?,"Pre‑settlement funding is an advance on a potential legal settlement, not a traditional bank loan. There are no monthly payments; repayment happens only if the case resolves successfully.",https://example.local/what-is-pre-settlement-funding,2025-08-01,"basics,non-recourse"
-2,eligibility,Who is eligible?,"Typical eligibility: you have an active personal‑injury claim, are represented by an attorney, and your case has merits supported by documentation.",https://example.local/eligibility,2025-08-01,"eligibility,attorney"
-3,case_types,Common case types,"Common case types include auto accidents, slip and fall, and dog bites. Other injury claims may also qualify after attorney review.",https://example.local/case-types,2025-08-01,case-types
-4,costs,Costs and fees,"Fees vary by case and state. Funding is typically non‑recourse: if you lose your case, you generally owe nothing back.",https://example.local/costs,2025-08-01,"fees,non-recourse"
-5,timeline,Timeline,"After we receive your information and attorney details, underwriting reviews your claim. If approved, funds may be available quickly via transfer.",https://example.local/timeline,2025-08-01,"process,timeline"
+59a4788d-981c-405d-ba8c-031c0a688d1a,d5f79032-fec8-4bc5-bc5a-ac0d7158e055,How Pre-Settlement Funding Works: The Process Explained,"How Pre-Settlement Funding Works: The Process Explained
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/how-pre-settlement-funding-works/,2025-04-16,"overview,process,eligibility,non-recourse"
+faaf51ed-5f5b-45a7-8c41-5c347b6bb5f1,ba694312-070c-42cc-8700-11ae402332be,Pre-Settlement Funding in Florida Explained,"Pre-Settlement Funding in Florida Explained
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- State-specific norms may influence eligibility and timelines.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/pre-settlement-funding-in-florida-explained/,2025-05-02,"state,FL,eligibility"
+8edfca98-20e5-4d58-a15a-0fadd057a677,a4af3c4e-bd93-4a9b-84b3-b471bce89802,How Many Pre-Settlement Fundings Can I Get?,"How Many Pre-Settlement Fundings Can I Get?
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Multiple-advance policies depend on updated case facts and attorney approval.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/how-many-pre-settlement-fundings-can-i-get/,2023-10-19,"limits,multiple-advances"
+072f6f0b-f135-4ea3-811c-4c7767e206fe,96c567e8-c27f-4389-9b92-a7a810679970,Pre-Settlement Funding vs. Traditional Bank Loans: What You Need to Know,"Pre-Settlement Funding vs. Traditional Bank Loans: What You Need to Know
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Differences from bank loans: no monthly payments, repayment only if case wins/settles.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/pre-settlement-funding-vs-traditional-bank-loan/,,"comparison,loans"
+f332e76a-454f-4a22-91c7-a5e72fbadc82,96c567e8-c27f-4389-9b92-a7a810679970,Pre-Settlement Funding vs. Traditional Bank Loans: What You Need to Know,ce.,https://www.oasisfinancial.com/pre-settlement-funding/pre-settlement-funding-vs-traditional-bank-loan/,,"comparison,loans"
+b806a1c7-004f-43a7-9a6e-66ae7bda4c85,eef67716-ea21-49f6-bf57-785859615a45,Pre-Settlement Funding | FAQ,"Pre-Settlement Funding | FAQ
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/faq/,,"faq,definitions"
+0670523e-96b0-47c1-ae17-3bc6e7a174a1,0577680f-6b74-44ff-8659-891aee5f0794,Why Is My Car Accident Lawsuit Taking So Long?,"Why Is My Car Accident Lawsuit Taking So Long?
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Auto cases: police report, liability clarity, treatment status matter.
+- Covers common lawsuit delays: discovery, medical treatment, negotiations.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/auto-accident/why-is-my-car-accident-lawsuit-taking-so-long/,,"auto,timelines"
+8a95ba86-52be-4f32-8f22-4b91d9f2a3a0,0577680f-6b74-44ff-8659-891aee5f0794,Why Is My Car Accident Lawsuit Taking So Long?,tion is general and not legal advice.,https://www.oasisfinancial.com/auto-accident/why-is-my-car-accident-lawsuit-taking-so-long/,,"auto,timelines"
+00c614c1-f2c2-496e-9da1-f51b7ecf4248,95b89338-9d12-464e-824b-513557a50ff6,Pre-settlement Funding for Auto Accident Lawsuits,"Pre-settlement Funding for Auto Accident Lawsuits
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Auto cases: police report, liability clarity, treatment status matter.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/auto-accident/pre-settlement-funding-for-auto-accident-lawsuits/,,"auto,eligibility"
+7368a285-5bf7-4332-9520-5cf11fa0c6e2,41172580-1bf0-4d42-821d-7bb8447d9f7c,How to Get Pre-Settlement Funding for an Auto Accident in NY: A Step-by-Step Guide,"How to Get Pre-Settlement Funding for an Auto Accident in NY: A Step-by-Step Guide
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Auto cases: police report, liability clarity, treatment status matter.
+- State-specific norms may influence eligibility and timelines.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/auto-accident/how-to-get-pre-settlement-funding-for-an-auto-accident-in-ny/,,"NY,auto,state"
+ce9b5c05-9bd7-43e8-8e94-cfdb7404e39d,41172580-1bf0-4d42-821d-7bb8447d9f7c,How to Get Pre-Settlement Funding for an Auto Accident in NY: A Step-by-Step Guide,"timelines.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/auto-accident/how-to-get-pre-settlement-funding-for-an-auto-accident-in-ny/,,"NY,auto,state"
+cadc7e76-7800-43dd-9eca-62bd7481c87a,cc7b38f2-eef5-461f-9fa3-a3284a4e53a9,Georgia Auto Accident Pre-Settlement Funding,"Georgia Auto Accident Pre-Settlement Funding
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Auto cases: police report, liability clarity, treatment status matter.
+- State-specific norms may influence eligibility and timelines.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/auto-accident/georgia-auto-accident-pre-settlement-funding/,,"GA,auto,state"
+ec370e1a-bc96-4cdd-93a9-b12d14f6e0b6,cc7b38f2-eef5-461f-9fa3-a3284a4e53a9,Georgia Auto Accident Pre-Settlement Funding,l and not legal advice.,https://www.oasisfinancial.com/auto-accident/georgia-auto-accident-pre-settlement-funding/,,"GA,auto,state"
+36937ed2-2302-4fa3-98c3-e3c67a144c3c,b4cae1ba-e5da-46cd-9b9a-da344a3bbc17,Pre-Settlement Funding for Auto Accident Lawsuits in Illinois,"Pre-Settlement Funding for Auto Accident Lawsuits in Illinois
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Auto cases: police report, liability clarity, treatment status matter.
+- State-specific norms may influence eligibility and timelines.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/pre-settlement-funding-for-auto-accident-lawsuits-in-illinois/,,"IL,auto,state"
+8f058ee9-53ef-44a4-a0d0-aa33f143ce9b,b4cae1ba-e5da-46cd-9b9a-da344a3bbc17,Pre-Settlement Funding for Auto Accident Lawsuits in Illinois,rmation is general and not legal advice.,https://www.oasisfinancial.com/pre-settlement-funding/pre-settlement-funding-for-auto-accident-lawsuits-in-illinois/,,"IL,auto,state"
+2a38b48a-871c-4881-a672-7b95e7076cdd,10fea28e-a6d0-42f6-8f75-4503ea64f88a,Pre-Settlement Funding for Auto Accident Lawsuits in Missouri,"Pre-Settlement Funding for Auto Accident Lawsuits in Missouri
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Auto cases: police report, liability clarity, treatment status matter.
+- State-specific norms may influence eligibility and timelines.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/pre-settlement-funding-for-auto-accident-lawsuits-in-missouri/,,"MO,auto,state"
+8928496a-beb1-4f72-90d0-e777148976e6,10fea28e-a6d0-42f6-8f75-4503ea64f88a,Pre-Settlement Funding for Auto Accident Lawsuits in Missouri,rmation is general and not legal advice.,https://www.oasisfinancial.com/pre-settlement-funding/pre-settlement-funding-for-auto-accident-lawsuits-in-missouri/,,"MO,auto,state"
+98d38dd0-0302-4e29-b25f-a8cbad961750,81f9bd50-ddbb-413b-9c8f-371f3e530937,Common Types of Pre-Settlement Funding In New York,"Common Types of Pre-Settlement Funding In New York
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- State-specific norms may influence eligibility and timelines.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/common-types-of-pre-settlement-funding-in-new-york/,,"NY,state"
+0e0dfd16-615c-4f3e-90c6-bdb22d6089c8,4490fadd-fe30-444b-bd7c-315cbe5f210c,Pre-Settlement Funding for Auto Accident Lawsuits in New York,"Pre-Settlement Funding for Auto Accident Lawsuits in New York
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Auto cases: police report, liability clarity, treatment status matter.
+- State-specific norms may influence eligibility and timelines.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/pre-settlement-funding-for-auto-accident-lawsuits-in-new-york/,,"NY,auto,state"
+7033174c-d94d-459a-9c58-a68bbc47516a,4490fadd-fe30-444b-bd7c-315cbe5f210c,Pre-Settlement Funding for Auto Accident Lawsuits in New York,rmation is general and not legal advice.,https://www.oasisfinancial.com/pre-settlement-funding/pre-settlement-funding-for-auto-accident-lawsuits-in-new-york/,,"NY,auto,state"
+387f20a2-e840-4855-beab-32c0cef7fb8d,35f27041-3d90-4e15-bfbd-2078c576d432,A Comprehensive Guide To Pre-Settlement Funding In Illinois,"A Comprehensive Guide To Pre-Settlement Funding In Illinois
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- State-specific norms may influence eligibility and timelines.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/a-comprehensive-guide-to-pre-settlement-funding-in-illinois/,,"IL,state"
+d577004b-88d6-4a14-adbb-c8c9570ea118,73957d55-c480-47f2-8bd4-3ca9054e7b5c,All You Need To Know About Pre-Settlement Funding In New York,"All You Need To Know About Pre-Settlement Funding In New York
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- State-specific norms may influence eligibility and timelines.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/all-you-need-to-know-about-pre-settlement-funding-in-new-york/,,"NY,state"
+cf4e8d58-92ba-4b37-bf06-2be4cc817c17,dc31f2e2-5b9d-4eba-97b8-afe9c53e0add,Pre-settlement Funding for Slip & Fall Lawsuit,"Pre-settlement Funding for Slip & Fall Lawsuit
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/slip-fall/pre-settlement-funding-for-slip-fall-lawsuit/,,"slip-fall,premises"
+7f49d116-c710-4bbf-aaf7-0a1720a258b2,3416d46e-0480-45d0-99bc-61d0eb98c992,Slip and Fall Lawsuit Funding,"Slip and Fall Lawsuit Funding
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/slip-fall/slip-and-fall-lawsuit-funding/,,"slip-fall,premises"
+92b848be-c8ac-4107-88f6-ebaafc405d7d,5751574a-883a-4c7d-90fe-57af9a5fd572,Pre-Settlement Funding for Workers’ Comp & Workplace Negligence,"Pre-Settlement Funding for Workers’ Comp & Workplace Negligence
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Workers’ comp availability varies by state; benefits coordination may apply.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/workers-comp/pre-settlement-funding-for-workers-comp-workplace-negligence/,,workers-comp
+1c66fdda-8f93-44a8-8734-414c5533f256,456d56e2-bd47-4b0b-a5d6-5bb7fee7f20b,Pre-Settlement Funding for Workers’ Comp Lawsuits in Ohio,"Pre-Settlement Funding for Workers’ Comp Lawsuits in Ohio
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Workers’ comp availability varies by state; benefits coordination may apply.
+- State-specific norms may influence eligibility and timelines.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/workers-comp/pre-settlement-funding-for-workers-comp-lawsuits-in-ohio/,,"workers-comp,OH,state"
+9c09058f-d403-4af9-b4dd-9d7cd8260119,456d56e2-bd47-4b0b-a5d6-5bb7fee7f20b,Pre-Settlement Funding for Workers’ Comp Lawsuits in Ohio,formation is general and not legal advice.,https://www.oasisfinancial.com/workers-comp/pre-settlement-funding-for-workers-comp-lawsuits-in-ohio/,,"workers-comp,OH,state"
+5038be79-9a7a-49ab-ba03-2c4b5e389909,15aace4c-c5aa-49a2-bfcc-f046cf15b2b8,South Carolina’s Workers’ Compensation Pre-Settlement Funding,"South Carolina’s Workers’ Compensation Pre-Settlement Funding
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Workers’ comp availability varies by state; benefits coordination may apply.
+- State-specific norms may influence eligibility and timelines.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/workers-comp/south-carolina-workers-comp-pre-settlement-funding/,,"workers-comp,SC,state"
+d415ca51-357f-43c6-bef2-619dc8270f45,15aace4c-c5aa-49a2-bfcc-f046cf15b2b8,South Carolina’s Workers’ Compensation Pre-Settlement Funding,s information is general and not legal advice.,https://www.oasisfinancial.com/workers-comp/south-carolina-workers-comp-pre-settlement-funding/,,"workers-comp,SC,state"
+a9856176-3ad5-4cfa-9b2d-bbd322cd020d,5e570a17-2253-48f2-89e4-62054328e683,How Long Can a Workers’ Comp Claim Stay Open?,"How Long Can a Workers’ Comp Claim Stay Open?
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Workers’ comp availability varies by state; benefits coordination may apply.
+- Covers common lawsuit delays: discovery, medical treatment, negotiations.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/workers-comp/how-long-can-workers-comp-claim-stay-open/,,"workers-comp,timelines"
+950a4b53-b1bb-4859-98f4-7bd243bf730b,5e570a17-2253-48f2-89e4-62054328e683,How Long Can a Workers’ Comp Claim Stay Open?,formation is general and not legal advice.,https://www.oasisfinancial.com/workers-comp/how-long-can-workers-comp-claim-stay-open/,,"workers-comp,timelines"
+8692e50f-d3a0-4af5-bb78-cb050e0d273b,6eb92d2a-95d1-4139-8f90-2772e7106b31,What is Settlement Funding?,"What is Settlement Funding?
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/what-is-settlement-funding-2/,,"overview,definitions"
+420031f7-813e-4d5c-806b-e8f5925faf2f,74c80f5f-9d88-4047-9a52-27dcb539ebe6,7 Reasons to Consider Pre-Settlement Funding,"7 Reasons to Consider Pre-Settlement Funding
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Funding can stabilize finances during litigation.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/7-reasons-to-consider-pre-settlement-funding/,,"overview,benefits"
+9b6b99fc-f4de-4da9-a53a-979362ac1c0f,886e32ed-fd86-4395-b9ba-6faf99b0c549,Car Accident Pre-Settlement Funding,"Car Accident Pre-Settlement Funding
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Auto cases: police report, liability clarity, treatment status matter.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/car-accident-pre-settlement-funding/,,auto
+c9c74afd-e28d-4ef9-94b3-c717dc684878,2d92449b-76db-4a64-98ba-50d20a50bc63,How Car Accident Loans or Fundings Work,"How Car Accident Loans or Fundings Work
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Differences from bank loans: no monthly payments, repayment only if case wins/settles.
+- Auto cases: police report, liability clarity, treatment status matter.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/can-you-get-a-loan-on-an-accident-settlement/,,"auto,comparison"
+2bac2eca-67d8-4f49-9808-8174936f7977,2d92449b-76db-4a64-98ba-50d20a50bc63,How Car Accident Loans or Fundings Work,nformation is general and not legal advice.,https://www.oasisfinancial.com/pre-settlement-funding/can-you-get-a-loan-on-an-accident-settlement/,,"auto,comparison"
+84b10265-61f4-482a-8830-5d77b7b26a52,e4b011f3-f6bf-429a-8218-a4dda1c15edf,Lawsuit Loans vs. Bank Loans,"Lawsuit Loans vs. Bank Loans
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Differences from bank loans: no monthly payments, repayment only if case wins/settles.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/lawsuit/lawsuit-loans-vs-bank-loans/,,comparison
+81e6ebd5-f4c5-4649-88b6-9e3356d42ebe,4fd81162-4e0c-496d-b658-2c902fa8fb07,Pre-Settlement Fundings vs Same-Day Accident Loan,"Pre-Settlement Fundings vs Same-Day Accident Loan
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+- Differences from bank loans: no monthly payments, repayment only if case wins/settles.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/pre-settlement-fundings-vs-same-day-accident-loan/,,comparison
+85a434ca-cf88-4d6f-8670-23e766914a92,511dcfc4-3337-4a29-bb17-4c96735fb5f1,Your Comprehensive Guide to Pre-Settlement Funding,"Your Comprehensive Guide to Pre-Settlement Funding
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/your-comprehensive-guide-to-pre-settlement-funding/,,overview
+be9e83a6-5541-42f4-9731-59753243ac97,6198dfa5-bf70-4948-94f7-8930597be8c2,Pre-settlement Funding for General Negligence & Other Injuries,"Pre-settlement Funding for General Negligence & Other Injuries
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/pre-settlement-funding-for-general-negligence-injuries/,,general-negligence
+7296158f-53c3-49ad-962e-c0aae4fe4074,f5d23800-f389-4c5a-940d-b7de07731875,Pre-settlement Funding for Wrongful Death Lawsuits,"Pre-settlement Funding for Wrongful Death Lawsuits
+
+Oasis Financial topic overview for agent reference. Not legal advice.
+
+- Pre-settlement funding is non-recourse; repayment is only from settlement.
+- Requires attorney representation.
+- Approval based on case merits and expected settlement value.
+- Common uses: rent, utilities, groceries, medical bills.
+- Timelines vary by case type/state and attorney responsiveness.
+
+This information is general and not legal advice.",https://www.oasisfinancial.com/pre-settlement-funding/pre-settlement-funding-for-wrongful-death-lawsuits/,,wrongful-death
