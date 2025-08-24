@@ -99,6 +99,17 @@ print("[KB] Loading FAISS index & metadata…", flush=True)
 index = faiss.read_index(str((INDEX_DIR / "oasis_openai.index")))
 meta = json.loads((INDEX_DIR / "meta.json").read_text(encoding="utf-8"))
 
+# Sanity: index vectors vs meta rows
+try:
+    ntotal = int(getattr(index, "ntotal", 0))
+except Exception:
+    ntotal = 0
+
+if ntotal != len(meta):
+    print(f"[KB][WARN] Index/meta size mismatch: index.ntotal={ntotal}, meta_rows={len(meta)}", flush=True)
+else:
+    print(f"[KB] Index/meta sizes OK: {ntotal}", flush=True)
+
 print(f"[KB] Ready. Index size: {len(meta)} chunks.", flush=True)
 
 
@@ -115,11 +126,16 @@ class SearchRequest(BaseModel):
 
 @app.get("/health")
 def health():
+    try:
+        ntotal = int(getattr(index, "ntotal", 0))
+    except Exception:
+        ntotal = 0
     return {
         "status": "ok",
         "index_dir": str(INDEX_DIR),
-        "model": MODEL,
+        "model": MODEL if 'MODEL' in globals() else LOCAL_EMBED_MODEL,
         "chunks": len(meta),
+        "ntotal": ntotal
     }
 
 
@@ -145,23 +161,19 @@ def sanitize_meta_row(m: dict) -> dict:
 
 @app.post("/search")
 def search(req: SearchRequest, x_api_key: Optional[str] = Header(None)):
-    # API key check (optional)
     if API_KEY and x_api_key != API_KEY:
         print("[KB] Unauthorized search attempt (bad x-api-key).", flush=True)
         raise HTTPException(status_code=401, detail="unauthorized")
 
-    # define q here
     q = (req.query or "").strip()
     if not q:
         raise HTTPException(status_code=400, detail="query is required")
 
-    # Guard: empty index
     total = len(meta)
     if total == 0:
         print("[KB] Search on empty index — returning zero hits.", flush=True)
         return {"results": []}
 
-    # Cap k
     try:
         k_req = int(req.k or 5)
     except Exception:
@@ -170,29 +182,57 @@ def search(req: SearchRequest, x_api_key: Optional[str] = Header(None)):
 
     # Embed & search
     try:
-        qv = embed_query(q)            # your existing embed_query() function
-        D, I = index.search(qv, k)     # FAISS IP/cosine index
+        qv = embed_query(q)
+        D, I = index.search(qv, k)
+        raw_labels = len(I[0]) if I is not None and len(I) > 0 else 0
     except Exception as e:
         print(f"[KB] Search pipeline failed: {e}", flush=True)
         raise HTTPException(status_code=500, detail="search failed")
 
+    # Filter & sanitize
     hits = []
+    neg_index = 0
+    nonfinite = 0
+    bad_meta = 0
+
     for score, idx in zip(D[0], I[0]):
         if idx is None or int(idx) < 0:
+            neg_index += 1
             continue
         try:
             fscore = float(score)
         except Exception:
+            nonfinite += 1
             continue
         if not isfinite(fscore):
+            nonfinite += 1
             continue
         try:
             m = sanitize_meta_row(meta[int(idx)])
         except Exception:
+            bad_meta += 1
             continue
         hits.append({"score": fscore, **m})
 
-    print(f"[KB] Query='{q[:60]}{'...' if len(q) > 60 else ''}' → {len(hits)} hits (k={k}, total={total})", flush=True)
+    # Debug line to help us see what's going on
+    preview = [{"score": round(h["score"], 4), "title": h["title"][:80]} for h in hits[:3]]
+    print(
+        f"[KB] Query='{q[:60]}{'...' if len(q) > 60 else ''}' "
+        f"raw={raw_labels}, ok={len(hits)}, neg_index={neg_index}, nonfinite={nonfinite}, bad_meta={bad_meta}",
+        flush=True
+    )
+    if preview:
+        print(f"[KB] Top preview: {preview}", flush=True)
+
     return {"results": hits}
 
-
+@app.get("/dev/grep")
+def grep(q: str):
+    ql = q.lower()
+    matches = []
+    for m in meta:
+        if ql in str(m.get("text","")).lower():
+            matches.append({"doc_id": m.get("doc_id"), "title": m.get("title")})
+            if len(matches) >= 5:
+                break
+    return {"matches": matches, "total_scanned": len(meta)}
