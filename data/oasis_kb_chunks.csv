@@ -1,1 +1,6 @@
 chunk_id,doc_id,title,text,source_url,updated,tags
+1,intro_funding,What is pre‑settlement funding?,"Pre‑settlement funding is an advance on a potential legal settlement, not a traditional bank loan. There are no monthly payments; repayment happens only if the case resolves successfully.",https://example.local/what-is-pre-settlement-funding,2025-08-01,"basics,non-recourse"
+2,eligibility,Who is eligible?,"Typical eligibility: you have an active personal‑injury claim, are represented by an attorney, and your case has merits supported by documentation.",https://example.local/eligibility,2025-08-01,"eligibility,attorney"
+3,case_types,Common case types,"Common case types include auto accidents, slip and fall, and dog bites. Other injury claims may also qualify after attorney review.",https://example.local/case-types,2025-08-01,case-types
+4,costs,Costs and fees,"Fees vary by case and state. Funding is typically non‑recourse: if you lose your case, you generally owe nothing back.",https://example.local/costs,2025-08-01,"fees,non-recourse"
+5,timeline,Timeline,"After we receive your information and attorney details, underwriting reviews your claim. If approved, funds may be available quickly via transfer.",https://example.local/timeline,2025-08-01,"process,timeline"
