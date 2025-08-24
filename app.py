@@ -150,7 +150,7 @@ def search(req: SearchRequest, x_api_key: Optional[str] = Header(None)):
         print("[KB] Unauthorized search attempt (bad x-api-key).", flush=True)
         raise HTTPException(status_code=401, detail="unauthorized")
 
-    # ✅ define q here
+    # define q here
     q = (req.query or "").strip()
     if not q:
         raise HTTPException(status_code=400, detail="query is required")
