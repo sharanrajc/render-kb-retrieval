@@ -1,5 +1,6 @@
 import os
 import json
+import subprocess
 from pathlib import Path
 from typing import Optional
 
@@ -39,9 +40,7 @@ def ensure_index() -> None:
         print(f"[KB] Using cached index at: {INDEX_DIR}", flush=True)
         return
 
-    # Guardrails & logs
     if not os.environ.get("OPENAI_API_KEY"):
-        # This will crash the app early with an explicit message in logs
         raise RuntimeError("[KB][FATAL] OPENAI_API_KEY is not set. Set it in Render → Environment.")
 
     if not CSV_PATH.exists():
@@ -49,11 +48,19 @@ def ensure_index() -> None:
                            f"make sure your repo contains data/oasis_kb_chunks.csv")
 
     print("[KB] Index not found. Building now…", flush=True)
-    # Build the index via the builder script (keeps this file small & consistent with local builds)
-    code = os.system(f"python build_index_openai.py --chunks {CSV_PATH} --out_dir {INDEX_DIR}")
-    if code != 0:
-        raise RuntimeError(f"[KB][FATAL] Index build failed with exit code {code}. "
-                           f"Check logs above for details.")
+    cmd = ["python", "build_index_openai.py", "--chunks", str(CSV_PATH), "--out_dir", str(INDEX_DIR)]
+    try:
+        # Stream logs live to Render
+        proc = subprocess.run(cmd, check=False, text=True, capture_output=True)
+        if proc.stdout:
+            print(proc.stdout, flush=True)
+        if proc.stderr:
+            print(proc.stderr, flush=True)
+        if proc.returncode != 0:
+            raise RuntimeError(f"[KB][FATAL] Index build failed with exit code {proc.returncode}.")
+    except Exception as e:
+        raise RuntimeError(f"[KB][FATAL] Index build exception: {e}") from e
+
     print("[KB] Index build complete.", flush=True)
 
 
