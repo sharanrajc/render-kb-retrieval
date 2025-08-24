@@ -11,6 +11,8 @@ import numpy as np
 import faiss
 from openai import OpenAI
 
+from math import isfinite
+MAX_K = 20  # hard cap to avoid latency/memory issues
 
 # -----------------------
 # Config / Environment
@@ -122,7 +124,6 @@ def health():
 
 @app.post("/search")
 def search(req: SearchRequest, x_api_key: Optional[str] = Header(None)):
-    # Optional header key (enable by setting RETRIEVER_API_KEY)
     if API_KEY and x_api_key != API_KEY:
         print("[KB] Unauthorized search attempt (bad x-api-key).", flush=True)
         raise HTTPException(status_code=401, detail="unauthorized")
@@ -131,26 +132,37 @@ def search(req: SearchRequest, x_api_key: Optional[str] = Header(None)):
     if not q:
         raise HTTPException(status_code=400, detail="query is required")
 
-    try:
-        qv = embed_query(q)
-    except Exception as e:
-        print(f"[KB] Embed failed: {e}", flush=True)
-        raise HTTPException(status_code=500, detail="embedding failed")
+    # Guard: empty index
+    total = len(meta)
+    if total == 0:
+        print("[KB] Search on empty index — returning zero hits.", flush=True)
+        return {"results": []}
+
+    # Cap k: 1 ≤ k ≤ min(MAX_K, total)
+    k = max(1, min(int(req.k or 5), MAX_K, total))
 
     try:
-        D, I = index.search(qv, req.k)
+        qv = embed_query(q)
+        D, I = index.search(qv, k)
     except Exception as e:
-        print(f"[KB] FAISS search failed: {e}", flush=True)
+        print(f"[KB] Search pipeline failed: {e}", flush=True)
         raise HTTPException(status_code=500, detail="search failed")
 
     hits = []
     for score, idx in zip(D[0], I[0]):
-        try:
-            m = meta[idx]
-            hits.append({"score": float(score), **m})
-        except Exception:
-            # If meta/index ever drift, skip bad rows
+        if idx is None or int(idx) < 0:
             continue
+        try:
+            fscore = float(score)
+        except Exception:
+            continue
+        if not isfinite(fscore):
+            continue
+        try:
+            m = meta[int(idx)]
+        except Exception:
+            continue
+        hits.append({"score": fscore, **m})
 
-    print(f"[KB] Query='{q[:60]}{'...' if len(q) > 60 else ''}' → {len(hits)} hits", flush=True)
+    print(f"[KB] Query='{q[:60]}{'...' if len(q) > 60 else ''}' → {len(hits)} hits (k={k}, total={total})", flush=True)
     return {"results": hits}
