@@ -28,10 +28,6 @@ client = OpenAI()
 # Helpers
 # -----------------------
 def ensure_index() -> None:
-    """
-    Build the FAISS index on first start if it's missing. Cache it under INDEX_DIR.
-    Emits clear log lines so you can follow boot behavior in Render logs.
-    """
     INDEX_DIR.mkdir(parents=True, exist_ok=True)
     idx_path = INDEX_DIR / "oasis_openai.index"
     meta_path = INDEX_DIR / "meta.json"
@@ -49,19 +45,32 @@ def ensure_index() -> None:
 
     print("[KB] Index not found. Building now…", flush=True)
     cmd = ["python", "build_index_openai.py", "--chunks", str(CSV_PATH), "--out_dir", str(INDEX_DIR)]
-    try:
-        # Stream logs live to Render
-        proc = subprocess.run(cmd, check=False, text=True, capture_output=True)
-        if proc.stdout:
-            print(proc.stdout, flush=True)
-        if proc.stderr:
-            print(proc.stderr, flush=True)
-        if proc.returncode != 0:
-            raise RuntimeError(f"[KB][FATAL] Index build failed with exit code {proc.returncode}.")
-    except Exception as e:
-        raise RuntimeError(f"[KB][FATAL] Index build exception: {e}") from e
+    proc = subprocess.run(cmd, check=False, text=True, capture_output=True)
+    if proc.stdout:
+        print(proc.stdout, flush=True)
+    if proc.stderr:
+        print(proc.stderr, flush=True)
 
-    print("[KB] Index build complete.", flush=True)
+    if proc.returncode != 0:
+        # Fallback: create an empty FAISS index so the service still runs
+        try:
+            print("[KB] Builder failed; attempting empty index fallback…", flush=True)
+            from openai import OpenAI
+            import numpy as np, faiss, json
+            # probe dimension from a dummy embedding
+            probe = OpenAI().embeddings.create(model=MODEL, input=["dimension probe"]).data[0].embedding
+            dim = len(probe)
+            index = faiss.IndexFlatIP(dim)
+            faiss.write_index(index, str(idx_path))
+            (meta_path).write_text("[]", encoding="utf-8")
+            (INDEX_DIR / "index_config.json").write_text(json.dumps({
+                "model": MODEL, "dim": dim, "similarity": "cosine", "text_col": "text"
+            }, indent=2), encoding="utf-8")
+            print("[KB] Empty index created; service will respond with zero hits until CSV is populated.", flush=True)
+        except Exception as e:
+            raise RuntimeError(f"[KB][FATAL] Index build failed and empty-index fallback also failed: {e}")
+    else:
+        print("[KB] Index build complete.", flush=True)
 
 
 def embed_query(text: str) -> np.ndarray:
