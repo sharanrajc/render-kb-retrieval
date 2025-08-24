@@ -36,7 +36,7 @@ def ensure_index() -> None:
     idx_path = INDEX_DIR / "oasis_openai.index"
     meta_path = INDEX_DIR / "meta.json"
 
-    if idx_path.exists() and meta_path.exists():
+    if not FORCE_REBUILD and idx_path.exists() and meta_path.exists():
         print(f"[KB] Using cached index at: {INDEX_DIR}", flush=True)
         return
 
