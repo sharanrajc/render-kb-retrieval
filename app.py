@@ -15,7 +15,6 @@ from math import isfinite
 MAX_K = 20  # hard cap to avoid latency/memory issues
 FORCE_REBUILD = os.environ.get("FORCE_REBUILD", "0") == "1"
 
-
 # -----------------------
 # Config / Environment
 # -----------------------
@@ -142,7 +141,6 @@ def health():
 
 def _to_int_safe(v) -> int:
     try:
-        # handle "12.0" or other weird strings
         s = str(v).strip()
         if "." in s:
             s = s.split(".", 1)[0]
@@ -151,14 +149,16 @@ def _to_int_safe(v) -> int:
         return 0
 
 def _clean_value(v):
-    if v is None: return ""
-    if isinstance(v, float) and not isfinite(v): return ""
-    if isinstance(v, (dict, list)): return v
-    # keep ints/floats/bools as-is; everything else to string
+    if v is None:
+        return ""
+    if isinstance(v, float) and not isfinite(v):  # NaN/Inf
+        return ""
+    if isinstance(v, (dict, list)):
+        return v
     return v if isinstance(v, (str, int, float, bool)) else str(v)
 
 def sanitize_meta_row(m: dict) -> dict:
-    # NEVER raise — always return a JSON-safe dict
+    # NEVER raise — always return JSON-safe fields
     return {
         "chunk_id": _to_int_safe(m.get("chunk_id")),
         "doc_id": _clean_value(m.get("doc_id")),
@@ -171,24 +171,37 @@ def sanitize_meta_row(m: dict) -> dict:
 
 @app.post("/search")
 def search(req: SearchRequest, x_api_key: Optional[str] = Header(None)):
-    # ... (auth + q + guards unchanged)
+    # optional API key
+    if API_KEY and x_api_key != API_KEY:
+        print("[KB] Unauthorized search attempt (bad x-api-key).", flush=True)
+        raise HTTPException(status_code=401, detail="unauthorized")
 
-    # cap k
+    # define q (this was missing)
+    q = (req.query or "").strip()
+    if not q:
+        raise HTTPException(status_code=400, detail="query is required")
+
+    total = len(meta)
+    if total == 0:
+        print("[KB] Search on empty index — returning zero hits.", flush=True)
+        return {"results": []}
+
+    # cap k to safe range
     try:
         k_req = int(req.k or 5)
     except Exception:
         k_req = 5
-    k = max(1, min(k_req, MAX_K, len(meta)))
+    k = max(1, min(k_req, MAX_K, total))
 
-    # embed & search
+    # embed & FAISS search
     try:
-        qv = embed_query(q)
+        qv = embed_query(q)             # <-- your existing embed_query() function
         D, I = index.search(qv, k)
     except Exception as e:
         print(f"[KB] Search pipeline failed: {e}", flush=True)
         raise HTTPException(status_code=500, detail="search failed")
 
-    # coerce any non-finite distances
+    # coerce non-finite distances so JSON is valid and we don't drop good hits
     D = np.nan_to_num(D, nan=0.0, posinf=1.0, neginf=-1.0)
 
     hits = []
@@ -199,15 +212,15 @@ def search(req: SearchRequest, x_api_key: Optional[str] = Header(None)):
         if idx is None or int(idx) < 0:
             neg_index += 1
             continue
-        # SAFELY fetch meta row
+        # safe meta fetch + sanitize
         try:
             m_raw = meta[int(idx)]
         except Exception as e:
             bad_meta += 1
             print(f"[KB][WARN] meta lookup failed for idx={idx}: {e}", flush=True)
             continue
+
         m = sanitize_meta_row(m_raw)
-        # ensure score is JSON-safe float
         try:
             fscore = float(score)
         except Exception:
@@ -225,6 +238,7 @@ def search(req: SearchRequest, x_api_key: Optional[str] = Header(None)):
         print(f"[KB] Top preview: {preview}", flush=True)
 
     return {"results": hits}
+
 
 
 @app.get("/dev/grep")
