@@ -140,12 +140,9 @@ def health():
 
 
 def _clean_value(v):
-    if v is None:
-        return ""
-    if isinstance(v, float) and not isfinite(v):  # NaN/Inf
-        return ""
-    if isinstance(v, (dict, list)):
-        return v
+    if v is None: return ""
+    if isinstance(v, float) and not isfinite(v): return ""
+    if isinstance(v, (dict, list)): return v
     return str(v) if not isinstance(v, (str, int, float, bool)) else v
 
 def sanitize_meta_row(m: dict) -> dict:
@@ -174,57 +171,52 @@ def search(req: SearchRequest, x_api_key: Optional[str] = Header(None)):
         print("[KB] Search on empty index — returning zero hits.", flush=True)
         return {"results": []}
 
+    # cap k
     try:
         k_req = int(req.k or 5)
     except Exception:
         k_req = 5
     k = max(1, min(k_req, MAX_K, total))
 
-    # Embed & search
+    # --- embed & search ---
     try:
         qv = embed_query(q)
-        D, I = index.search(qv, k)
-        raw_labels = len(I[0]) if I is not None and len(I) > 0 else 0
+        D, I = index.search(qv, k)  # cosine via IP on normalized vecs
     except Exception as e:
         print(f"[KB] Search pipeline failed: {e}", flush=True)
         raise HTTPException(status_code=500, detail="search failed")
 
-    # Filter & sanitize
+    # Replace non-finite scores to keep JSON valid and avoid filtering out everything
+    D = np.nan_to_num(D, nan=0.0, posinf=1.0, neginf=-1.0)
+
     hits = []
     neg_index = 0
-    nonfinite = 0
     bad_meta = 0
 
-    for score, idx in zip(D[0], I[0]):
+    for j, (score, idx) in enumerate(zip(D[0], I[0])):
         if idx is None or int(idx) < 0:
             neg_index += 1
-            continue
-        try:
-            fscore = float(score)
-        except Exception:
-            nonfinite += 1
-            continue
-        if not isfinite(fscore):
-            nonfinite += 1
             continue
         try:
             m = sanitize_meta_row(meta[int(idx)])
         except Exception:
             bad_meta += 1
             continue
-        hits.append({"score": fscore, **m})
+        hits.append({"score": float(score), **m})
 
-    # Debug line to help us see what's going on
+    # Debug: show raw labels and a preview of top results
+    raw_labels = len(I[0]) if I is not None and len(I) > 0 else 0
     preview = [{"score": round(h["score"], 4), "title": h["title"][:80]} for h in hits[:3]]
     print(
         f"[KB] Query='{q[:60]}{'...' if len(q) > 60 else ''}' "
-        f"raw={raw_labels}, ok={len(hits)}, neg_index={neg_index}, nonfinite={nonfinite}, bad_meta={bad_meta}",
+        f"raw={raw_labels}, ok={len(hits)}, neg_index={neg_index}, bad_meta={bad_meta}",
         flush=True
     )
     if preview:
         print(f"[KB] Top preview: {preview}", flush=True)
 
     return {"results": hits}
+
 
 @app.get("/dev/grep")
 def grep(q: str):
